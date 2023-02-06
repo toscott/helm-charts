@@ -7,6 +7,10 @@ on:
 
 jobs:
   release:
+    permissions:
+      contents: write # for helm/chart-releaser-action to push chart release and create a release
+      packages: write # for helm/chart-releaser-action to push chart release and create a release
+      id-token: write # for helm/chart-releaser-action to push chart release and create a release  
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
