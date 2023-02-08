@@ -11,5 +11,5 @@
 #
 #repositoryID: The ID of the Artifact Hub repository where the packages will be published to (optional, but it enables verified publisher)
 owners: # (optional, used to claim repository ownership)
-  - name: Jan-Otto Kröpke
-    email: github@jkroepke.de
+  - name: Tony Scott
+    email: toscott+artifacthub@gmail.com
