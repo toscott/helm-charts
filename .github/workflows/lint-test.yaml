@@ -33,4 +33,4 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --debug --config charts/ct.yaml --excluded-charts amazon-eks-pod-identity-webhook,keycloak-config-cli
+        run: ct install --debug --config charts/ct.yaml 
