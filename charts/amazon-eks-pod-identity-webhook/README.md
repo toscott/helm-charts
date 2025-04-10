@@ -1,6 +1,6 @@
 # amazon-eks-pod-identity-webhook
 
-![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.4.0](https://img.shields.io/badge/AppVersion-v0.4.0-informational?style=flat-square)
+![Version: 2.5.0](https://img.shields.io/badge/Version-2.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.6.4](https://img.shields.io/badge/AppVersion-v0.6.4-informational?style=flat-square)
 
 A Kubernetes webhook for pods that need AWS IAM access
 
@@ -50,7 +50,7 @@ helm install amazon-eks-pod-identity-webhook toscott/amazon-eks-pod-identity-web
 | image.tag | string | `.Chart.AppVersion` | amazon-eks-pod-identity-webhook image tag (immutable tags are recommended). |
 | imagePullSecrets | list | `[]` | registry secret names as an array |
 | livenessProbe.httpGet.path | string | `"/healthz"` | This is the liveness check endpoint |
-| livenessProbe.httpGet.port | string | `"metrics"` |  |
+| livenessProbe.httpGet.port | string | `"https"` |  |
 | metrics.serviceMonitor.additionalLabels | object | `{}` | Used to pass Labels that are required by the installed Prometheus Operator |
 | metrics.serviceMonitor.enabled | bool | `false` | Create serviceMonitor Resource for scraping metrics using PrometheusOperator |
 | metrics.serviceMonitor.honorLabels | bool | `false` | honorLabels chooses the metric's labels on collisions with target labels |
@@ -61,6 +61,8 @@ helm install amazon-eks-pod-identity-webhook toscott/amazon-eks-pod-identity-web
 | mutatingWebhook.annotations | object | `{}` | Annotations for amazon-eks-pod-identity-webhook mutating webhook |
 | mutatingWebhook.failurePolicy | string | `"Ignore"` | FailurePolicy of the amazon-eks-pod-identity-webhook mutating webhook. Fail or Ignore are allowed. # ref: https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#failure-policy |
 | mutatingWebhook.namespaceSelector | object | `{}` | namespaceSelector for the mutating webhook to include or exclude namespace. |
+| mutatingWebhook.objectSelector.matchExpressions | object | `{}` | Allows selecting objects (pods) based on flexible matching rules for specific labels and fields. |
+| mutatingWebhook.objectSelector.matchLabels | list | `[]` | In the MutatingWebhook, matchLabels selects objects (pods) based on specific labels matching exactly. |
 | nameOverride | string | `""` | String to partially override amazon-eks-pod-identity-webhook.fullname template (will maintain the release name) |
 | namespaceOverride | string | `""` | String to partially override amazon-eks-pod-identity-webhook.fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node labels for pod assignment. Evaluated as a template. |
@@ -80,7 +82,7 @@ helm install amazon-eks-pod-identity-webhook toscott/amazon-eks-pod-identity-web
 | podSecurityContext | object | `{}` | amazon-eks-pod-identity-webhook pods' Security Context. |
 | priorityClassName | string | `""` | PriorityClass applied to deployment |
 | readinessProbe.httpGet.path | string | `"/healthz"` | This is the readiness check endpoint |
-| readinessProbe.httpGet.port | string | `"metrics"` |  |
+| readinessProbe.httpGet.port | string | `"https"` |  |
 | replicaCount | int | `1` | Number of amazon-eks-pod-identity-webhook replicas to deploy |
 | resources.limits | object | `{}` | The resources limits for the amazon-eks-pod-identity-webhook container # Example: # limits: #    cpu: 100m #    memory: 128Mi |
 | resources.requests | object | `{}` | The requested resources for the amazon-eks-pod-identity-webhook container # Examples: # requests: #    cpu: 100m #    memory: 128Mi |
